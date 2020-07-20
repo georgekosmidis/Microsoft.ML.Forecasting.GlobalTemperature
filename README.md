@@ -1,1 +1,1 @@
-# ML.NET.Forecasting.GlobalTemperature
+# Microsoft.ML.Forecasting.GlobalTemperature.GlobalTemperature
