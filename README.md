@@ -2,6 +2,9 @@
 
 This is just a sample that predicts the global average land temperature. In machine learning, the prediction of specific numeric values based on past observed data, is known as regression.
 
+## Details
+It actually contains two samples, one as a proof of concept for known temperatures to compare results, and one for random future months. 
+
 ## Dataset
 The original data comes from a public dataset: https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data/data?select=GlobalTemperatures.csv
 

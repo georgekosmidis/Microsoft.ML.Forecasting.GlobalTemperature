@@ -18,7 +18,8 @@ namespace Microsoft.ML.Forecasting.GlobalTemperature.Engine
         /// </summary>
         /// <param name="context">The common context for all ML.NET operations.</param>
         /// <param name="dataLoader">A data loader instane to retrieve the train set.</param>
-        public Trainer(MLContext context, DataLoader dataLoader)
+        /// <param name="horizon">The number of values to forecast.</param>
+        public Trainer(MLContext context, DataLoader dataLoader, int horizon)
         {          
             var seriesLength = dataLoader.SeriesData.GetColumn<DateTime>(nameof(ModelInput.Date)).Count();
             var trainSize = dataLoader.TrainData.GetColumn<DateTime>(nameof(ModelInput.Date)).Count();
@@ -27,10 +28,10 @@ namespace Microsoft.ML.Forecasting.GlobalTemperature.Engine
             var forecastingPipeline = context.Forecasting.ForecastBySsa(
                 outputColumnName: nameof(ModelOutput.ForecastedLandAverageTemperature),
                 inputColumnName: nameof(ModelInput.LandAverageTemperature),
-                windowSize: testSize,
+                windowSize: 120,
                 seriesLength: seriesLength,
                 trainSize: trainSize,
-                horizon: testSize,
+                horizon: horizon,
                 confidenceLevel: 0.95f,
                 confidenceLowerBoundColumn: nameof(ModelOutput.LowerBoundLandAverageTemperature),
                 confidenceUpperBoundColumn: nameof(ModelOutput.UpperBoundLandAverageTemperature));
